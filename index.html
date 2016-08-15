@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pressure Tank System</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                padding: 5px;
+            }
+        table {
+            border-spacing: 15px;
+        }
+        .center {
+            text-align: center;
+            border: 3px;
+            
+        }
+        </style>
+    </head>
+    <body>
+        
+        <h1 style="color:blue;text-align: center;">FMEA for Pressure Tank System</h1>
+        <p>Enter values for S, O and D to genrate RPN</p>
+        <table style="width:100%">
+            <tr>
+                <th>Function/Item</th>
+                <th>Potential Failure Mode</th>
+                <th>Effects</th>
+                <th>Causes</th>
+                <th>Current Control</th>
+                <th>S</th>
+                <th>O</th>
+                <th>D</th>
+                <th>RPN</th>
+            </tr>
+            <tr>
+                <td>Power Supply</td>
+                <td>Low voltage/ Voltage fluctuation</td>
+                <td>Machine breakdown, low efficiency of the process</td>
+                <td>Complication in the power source or power transmission</td>
+                <td>Use of fuse or MCB/ stabilizers</td>
+                <td><input type="number" id="id1" name="quantity" min="1" max="10"></td>
+                <td><input type="number" id="id2" name="quantity" min="1" max="10"></td>
+                <td><input type="number" id="id3" name="quantity" min="1" max="10"></td>
+                <td id="output1"></td>
+            </tr>
+            <tr>
+                <td>Timer (to cut off pumping)</td>
+                <td>Disruption in timer causing switch failure</td>
+                <td>Switch does not open, resulting in tank rupture (over pressure)</td>
+                <td>Mechanical failure</td>
+                <td>Operator will observe pressure gauge and switch off manually, Releif valve</td>
+                <td> <input id="id4" type="number" min="1" max="10"></td>
+                <td><input type="number" id="id5" name="quantity1" min="1" max="10"></td>
+                <td><input type="number" id="id6" name="quantity1" min="1" max="10"></td>
+                <td id="output2"></td>
+            </tr>
+            <tr>
+                <td>Operator (to observe decrease in tank pressure before every cycle)</td>
+                <td>Incorrect check by the operator</td>
+                <td>Failure of pressure gauge and pressure tank rupture by overpressure</td>
+                <td>Human error</td>
+                <td>No check</td>
+                <td><input type="number" id="id7" name="quantity2" min="1" max="10"></td>
+                <td><input type="number" id="id8" name="quantity2" min="1" max="10"></td>
+                <td><input type="number" id="id9" name="quantity2" min="1" max="10"></td>
+                <td id="output3"></td>
+            </tr>
+           
+        </table>
+        <p>  </p>
+        <div class="center">
+         <button onclick="myFunction()"><b>Generate RPN</b></button>
+         </div>
+         <script>
+             function myFunction() {
+                 var inpObj1 = document.getElementById("id1");
+                 var inpObj2 = document.getElementById("id2");
+                 var inpObj3 = document.getElementById("id3");
+                 var out1 =inpObj1.value*inpObj2.value*inpObj3.value;
+                 
+                 var inpObj4 = document.getElementById("id4");
+                 var inpObj5 = document.getElementById("id5");
+                 var inpObj6 = document.getElementById("id6");
+                 var out2 =inpObj4.value*inpObj5.value*inpObj6.value;
+                 
+                 var inpObj7 = document.getElementById("id7");
+                 var inpObj8 = document.getElementById("id8");
+                 var inpObj9 = document.getElementById("id9");
+                 var out3=inpObj7.value*inpObj8.value*inpObj9.value;
+                 
+                 if ((inpObj1.checkValidity() == true)&&(inpObj2.checkValidity() == true)&&(inpObj3.checkValidity() == true)) {
+                    document.getElementById("output1").innerHTML =out1;
+                 } else {
+                     
+                      document.getElementById("output1").innerHTML = "Enter valid values";
+                 }
+               
+               
+               
+               if ((inpObj4.checkValidity() == true)&&(inpObj5.checkValidity() == true)&&(inpObj6.checkValidity() == true)) {
+                   document.getElementById("output2").innerHTML =out2;
+               } else {
+                   
+                   document.getElementById("output2").innerHTML = "Enter valid values";
+               }
+               
+               if ((inpObj7.checkValidity() == true)&&(inpObj8.checkValidity() == true)&&(inpObj9.checkValidity() == true)) {
+                   document.getElementById("output3").innerHTML =out3;
+               } else {
+                   
+                   document.getElementById("output3").innerHTML = "Enter valid values";
+               }
+             }
+         </script>
+    </body>
+</html>
